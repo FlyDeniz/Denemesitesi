@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Deniz Savaş - Kişisel Portföy ve CV" />
+  <meta name="theme-color" content="#111827" />
+  <title>Deniz Savaş | Kişisel Portföy</title>
+  <!-- Basit, hızlı ve tamamen tek dosya: Modern, erişilebilir ve mobil uyumlu -->
+  <style>
+    /* ====== Tema Değişkenleri ====== */
+    :root {
+      --bg: #0b1220;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: #111827;
+      --card-2: #0f172a;
+      --border: #1f2937;
+      --accent: #60a5fa;
+      --accent-2: #22d3ee;
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --radius: 14px;
+      --shadow: 0 10px 24px rgba(0,0,0,.35);
+      --maxw: 1100px;
+    }
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --muted: #475569;
+      --card: #ffffff;
+      --card-2: #f1f5f9;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --accent-2: #0ea5e9;
+      --shadow: 0 10px 20px rgba(2,6,23,.08);
+    }
+
+    /* ====== Genel ====== */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; color: var(--text); background: radial-gradient(1000px 600px at 10% -10%, rgba(96,165,250,.12), transparent 60%), radial-gradient(700px 400px at 110% 10%, rgba(34,211,238,.10), transparent 60%), var(--bg); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; border-radius: var(--radius); }
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+    .section { padding: 64px 0; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .subtle { color: var(--muted); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { padding: 6px 10px; background: var(--card-2); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; }
+    .btn { display: inline-block; padding: 10px 16px; border-radius: 10px; border: 1px solid var(--border); background: linear-gradient(180deg, var(--accent), var(--accent-2)); color: white; font-weight: 600; box-shadow: var(--shadow); transition: transform .12s ease, filter .12s ease; }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.03); text-decoration: none; }
+    .btn.outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn.ghost { background: transparent; border: none; color: var(--muted); }
+    .grid { display: grid; gap: 20px; }
+
+    /* ====== Navbar ====== */
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(10px); background: color-mix(in srgb, var(--bg) 85%, transparent); border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .2px; }
+    .brand-dot { width: 12px; height: 12px; border-radius: 3px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 2px 10px color-mix(in srgb, var(--accent) 50%, transparent); }
+    nav ul { display: flex; gap: 16px; list-style: none; margin: 0; padding: 0; }
+    nav a { font-weight: 600; color: var(--text); opacity: .9; }
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .menu-btn { display: none; }
+
+    /* ====== Hero ====== */
+    .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center; padding: 40px 0 10px; }
+    .hero h1 { font-size: clamp(28px, 4vw, 44px); line-height: 1.1; margin: 0 0 14px; }
+    .hero p { font-size: clamp(15px, 2.3vw, 18px); color: var(--muted); margin-bottom: 22px; }
+    .hero-art { aspect-ratio: 1 / 1; background: conic-gradient(from 180deg at 50% 50%, color-mix(in srgb, var(--accent) 65%, transparent) 0 25%, color-mix(in srgb, var(--accent-2) 65%, transparent) 25% 50%, transparent 50% 100%); border-radius: 24px; border: 1px solid var(--border); position: relative; overflow: hidden; }
+    .hero-badge { position: absolute; right: 16px; bottom: 16px; background: var(--card); border: 1px solid var(--border); padding: 10px 12px; border-radius: 12px; font-size: 13px; display: flex; align-items: center; gap: 8px; }
+    .hero-badge .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 20%, transparent); }
+
+    /* ====== Bölüm Başlıkları ====== */
+    .section h2 { font-size: 26px; margin: 0 0 16px; }
+    .section .lead { margin-bottom: 26px; }
+
+    /* ====== Kartlar ====== */
+    .cards { grid-template-columns: repeat(3, 1fr); }
+    .card .card-body { padding: 18px; }
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .meta { display: flex; gap: 10px; align-items: center; font-size: 12px; color: var(--muted); }
+
+    /* ====== Deneyim Timeline ====== */
+    .timeline { position: relative; padding-left: 22px; }
+    .timeline::before { content: ""; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+    .tl-item { position: relative; padding: 10px 0 18px 14px; }
+    .tl-item::before { content: ""; position: absolute; left: -2px; top: 12px; width: 10px; height: 10px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent); }
+    .tl-item h3 { margin: 0 0 6px; font-size: 16px; }
+    .tl-item .when { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+    .tl-item ul { margin: 0; padding-left: 18px; }
+
+    /* ====== İletişim ====== */
+    form { display: grid; gap: 12px; }
+    input, textarea { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); color: var(--text); }
+    textarea { min-height: 120px; resize: vertical; }
+
+    /* ====== Footer ====== */
+    footer { border-top: 1px solid var(--border); padding: 26px 0; color: var(--muted); }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 720px) {
+      nav ul { display: none; position: absolute; top: 64px; right: 0; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px; box-shadow: var(--shadow); }
+      nav ul.open { display: grid; gap: 10px; }
+      .menu-btn { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); }
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="sr-only">İçeriğe geç</a>
+  <header>
+    <div class="container nav">
+      <div class="brand"><span class="brand-dot"></span> Deniz Savaş</div>
+      <nav aria-label="Birincil">
+        <ul id="menu">
+          <li><a href="#about">Hakkımda</a></li>
+          <li><a href="#skills">Yetenekler</a></li>
+          <li><a href="#projects">Projeler</a></li>
+          <li><a href="#experience">Deneyim</a></li>
+          <li><a href="#contact">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn outline" id="themeBtn" aria-label="Tema değiştir">🌙</button>
+        <button class="menu-btn" id="menuBtn" aria-label="Menüyü aç/kapat">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <!-- HERO -->
+    <section class="hero section" id="home">
+      <div>
+        <div class="subtle">Web Tasarım · Teknik Destek · Gelişmekte Olan Dev</div>
+        <h1>Merhaba, ben Deniz. <br/>Kullanışlı ve sade deneyimler tasarlarım.</h1>
+        <p>Satış ve teknik destek deneyimimi; web tasarım, temel Linux/Network ve siber güvenlik eğitimlerimle birleştiriyorum. Hedefim; modern web, otomasyon ve güvenlik odaklı projelerde değer üretmek.</p>
+        <div class="grid" style="grid-template-columns: auto auto; gap: 12px; margin-top: 8px;">
+          <a class="btn" href="#projects">Projelerimi Gör</a>
+          <a class="btn outline" href="assets/Deniz_Savas_CV.pdf" download>CV'yi İndir</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-badge"><span class="dot"></span> Yeni sertifikalar: HTML · Linux · Network</div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="grid" style="grid-template-columns: .9fr 1.1fr; align-items: center;">
+        <div>
+          <img src="https://picsum.photos/640/480?grayscale" alt="Profil görseli için yer tutucu" />
+        </div>
+        <div>
+          <h2>Hakkımda</h2>
+          <p class="lead subtle">Ankara Üniversitesi'nde Web Tasarımı ve Kodlama öğrencisiyim. TOGG Deneyim Merkezi'nde müşteri süreçlerini destekledim; veri manipülasyonu, temel Linux ve ağ gibi teknik alanlarda sertifikalarım bulunuyor. Öğrenmeyi sahada uygulamaya dönüştürmeyi seviyorum.</p>
+          <div class="chips" style="margin-top: 12px;">
+            <span class="chip">Kullanıcı Odaklılık</span>
+            <span class="chip">Problem Çözme</span>
+            <span class="chip">Sürekli Öğrenme</span>
+            <span class="chip">Ekip Çalışması</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2>Yetenekler</h2>
+      <p class="subtle">Aktif olarak geliştirdiğim alanlar</p>
+      <div class="grid cards" style="margin-top: 16px;">
+        <div class="card">
+          <div class="card-body">
+            <h3>Web & Kodlama</h3>
+            <div class="chips" style="margin-top: 8px;">
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+              <span class="chip">JavaScript (başlangıç)</span>
+              <span class="chip">Python (temel)</span>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h3>OS & Network</h3>
+            <div class="chips" style="margin-top: 8px;">
+              <span class="chip">Linux</span>
+              <span class="chip">Ağ Temelleri</span>
+              <span class="chip">Bash</span>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h3>Ofis & Destek</h3>
+            <div class="chips" style="margin-top: 8px;">
+              <span class="chip">MS Office</span>
+              <span class="chip">Excel</span>
+              <span class="chip">Müşteri Desteği</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2>Projeler</h2>
+      <p class="subtle">Öğrenirken ürettiğim küçük ama anlamlı işler</p>
+      <div class="grid cards" style="margin-top: 16px;">
+        <article class="card">
+          <img src="https://picsum.photos/640/360" alt="Portföy sitesi ekran görüntüsü" />
+          <div class="card-body">
+            <h3>Kişisel Portföy</h3>
+            <p class="subtle">HTML & CSS ile responsive tek sayfa portföy. Hafif, hızlı, erişilebilir.</p>
+            <div class="chips" style="margin: 10px 0;">
+              <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Responsive</span>
+            </div>
+            <div class="meta">
+              <a href="#" class="btn outline">Canlı Önizleme</a>
+              <a href="#" class="btn ghost">Kaynak Kodu →</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://picsum.photos/640/361" alt="Excel otomasyon aracı" />
+          <div class="card-body">
+            <h3>Excel Otomasyon</h3>
+            <p class="subtle">Excel'den veri çekip rapora dönüştüren basit Python scripti.</p>
+            <div class="chips" style="margin: 10px 0;">
+              <span class="chip">Python</span><span class="chip">openpyxl</span>
+            </div>
+            <div class="meta">
+              <a href="#" class="btn ghost">Kaynak Kodu →</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://picsum.photos/640/362" alt="Log analiz aracı" />
+          <div class="card-body">
+            <h3>Linux Log Analizi</h3>
+            <p class="subtle">Bash ile sistem loglarından özet çıkaran basit araç.</p>
+            <div class="chips" style="margin: 10px 0;">
+              <span class="chip">Bash</span><span class="chip">Linux</span>
+            </div>
+            <div class="meta">
+              <a href="#" class="btn ghost">Kaynak Kodu →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <h2>Deneyim</h2>
+      <div class="timeline" style="margin-top: 12px;">
+        
+          <ul>
+            <li>Yer sağlayıcı firmada satış ve temel teknik destek görevleri.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certs" class="section">
+      <h2>Sertifikalar</h2>
+      <div class="grid cards" style="margin-top: 16px; grid-template-columns: repeat(2, 1fr);">
+        <div class="card"><div class="card-body">
+          <h3>Teknik</h3>
+          <ul>
+            <li>HTML 101 · Turkcell Akademi (2025)</li>
+            <li>Temel Linux 101 · Turkcell Akademi (2025)</li>
+            <li>Temel Network · Turkcell Akademi (2025)</li>
+            <li>Veri Manipülasyonu 101/201 · Turkcell Akademi (2025)</li>
+            <li>Siber Güvenliğe Giriş · Turkcell Akademi (2025)</li>
+            <li>Pentesting · Turkcell Akademi (2025)</li>
+          </ul>
+        </div></div>
+        <div class="card"><div class="card-body">
+          <h3>Profesyonel</h3>
+          <ul>
+            <li>Müşteri Deneyimi Sertifikası · Turkcell TAG (2025)</li>
+            <li>Özel Sektör Sertifikası · Turkcell TAG (2025)</li>
+          </ul>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h2>İletişim</h2>
+      <div class="grid" style="grid-template-columns: 1.1fr .9fr; gap: 22px;">
+        <div class="card"><div class="card-body">
+          <p class="subtle">Yeni bir projede birlikte çalışalım mı? Bana e‑posta ya da LinkedIn'den ulaşabilirsin.</p>
+          <p><strong>E‑posta:</strong> <a href="mailto:denizsavas315@gmail.com">denizsavas315@gmail.com</a></p>
+        </div></div>
+        <div class="card"><div class="card-body">
+          <form action="https://formspree.io/f/mgvnkgyk" method="POST" id="contactForm">
+            <input name="name" placeholder="Adınız" required />
+            <input name="email" type="email" placeholder="E‑posta" required />
+            <textarea name="message" placeholder="Mesajınız" required></textarea>
+            <!-- Bot koruması: gizli alan -->
+            <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off" />
+            <button class="btn" type="submit">Gönder</button>
+            <p id="formStatus" class="subtle" aria-live="polite" style="margin-top:8px"></p>
+          </form>
+        </div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="y"></span> Deniz Savaş · Tüm hakları saklıdır.
+    </div>
+  </footer>
+
+  <script>
+    // Yıl
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // Tema
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const saved = localStorage.getItem('theme');
+    if (saved) root.setAttribute('data-theme', saved);
+    themeBtn.textContent = root.getAttribute('data-theme') === 'light' ? '🌙' : '☀️';
+    themeBtn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme');
+      const next = cur === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      themeBtn.textContent = next === 'light' ? '🌙' : '☀️';
+      localStorage.setItem('theme', next);
+    });
+    // Menü
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+    menuBtn.addEventListener('click', () => menu.classList.toggle('open'));
+    // Form - AJAX gönderim (opsiyonel)
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('formStatus');
+    form?.addEventListener('submit', async (e) => {
+      // Eğer Formspree ID girilmediyse normal POST ile devam etsin
+      if (form.action.includes('FORM_ID')) return; 
+      e.preventDefault();
+      statusEl.textContent = 'Gönderiliyor...';
+      try {
+        const data = new FormData(form);
+        const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+        if (res.ok) {
+          statusEl.textContent = 'Teşekkürler! Mesajınız alındı.';
+          form.reset();
+        } else {
+          statusEl.textContent = 'Bir hata oluştu. Lütfen tekrar deneyin.';
+        }
+      } catch (err) {
+        statusEl.textContent = 'Bağlantı hatası. Birazdan tekrar deneyin.';
+      }
+    });
+  </script>
+
+  <!-- Yapılandırılmış Veri (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Deniz Savaş",
+    "jobTitle": "Web Tasarım & Teknik Destek",
+    "email": "mailto:denizsavas315@gmail.com",
+    "url": "https://example.com",
+    "contactPoint": [{"@type":"ContactPoint","contactType":"customer support","email":"mailto:denizsavas315@gmail.com"}]
+  }
+  </script>
+</body>
+</html>
